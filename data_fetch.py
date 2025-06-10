@@ -1,0 +1,35 @@
+import os
+from dotenv import load_dotenv
+import ccxt
+import pandas as pd
+import numpy as np
+
+
+load_dotenv() #ladowanie kluczy api
+api_key1 = str(os.environ.get('bitget_api_key'))
+secret_api_key1 = str(os.environ.get('bitget_secret_api_key'))
+symbol1 = "SUI/USDT:USDT"
+exchange1 = "bitget"
+
+def fetching_trades(symbol: str, exchange_id: str, api_key: str, secret_api_key: str):
+	#ustawienie gieldy oraz symbolu
+	chosen_symbol = symbol
+	chosen_exchange = getattr(ccxt, exchange_id)
+	exchange = chosen_exchange({
+		"apiKey": api_key,
+		"secret": secret_api_key,
+		"enableRateLimit": True
+	})
+
+	#pobranie historycznych transakcji oraz przetransformowanie jej do DataFrame z pandas
+	trade = exchange.fetch_trades(chosen_symbol)
+	df = pd.DataFrame(trade)
+	needed_df = df[['datetime', 'price']]
+
+	#przeksztalcenie nazwy symbolu tak by mozna bylo zapisac plik oraz zapisanie pliku
+	first_name_change = chosen_symbol.lower()
+	second_name_change = first_name_change.replace('/', '_')
+	correct_file_name = second_name_change.replace(':', '_')
+	needed_df.to_csv(f'{correct_file_name}.csv', index = False)
+
+fetching_trades(symbol1, exchange1, api_key1, secret_api_key1)
