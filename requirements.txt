@@ -1,0 +1,4 @@
+ccxt~=4.4.88
+pandas~=2.2.3
+numpy~=2.0.1
+python-dotenv~=1.1.0
