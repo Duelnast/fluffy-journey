@@ -7,8 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-utworzenie folderowej struktury&#10;-dodanie plikow na przyszlosc">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/connections/data_fetch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/connections/data_fetch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749674869953</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa">
+      <option name="closed" value="true" />
+      <created>1749675248705</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749675248705</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +127,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-przerobienie na funkcje&#10;-dodanie pandas&#10;-zapis do csv" />
     <MESSAGE value="-utworzenie folderowej struktury&#10;-dodanie plikow na przyszlosc" />
-    <option name="LAST_COMMIT_MESSAGE" value="-utworzenie folderowej struktury&#10;-dodanie plikow na przyszlosc" />
+    <MESSAGE value="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa" />
+    <option name="LAST_COMMIT_MESSAGE" value="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa" />
   </component>
 </project>
