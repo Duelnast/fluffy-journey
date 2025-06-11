@@ -8,13 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-przerobienie na funkcje&#10;-dodanie pandas&#10;-zapis do csv">
-      <change afterPath="$PROJECT_DIR$/.idea/Projekt.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Renko.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_fetch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Renko.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Renko.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_fetch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/connections/data_fetch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +46,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "vcs.Subversion",
+    "settings.editor.selected.configurable": "project.scopes",
     "settings.editor.splitter.proportion": "0.11211847"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Data" />
+      <recent name="$PROJECT_DIR$/src/logic" />
+      <recent name="$PROJECT_DIR$/src/connections" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
   </component>
@@ -64,6 +68,23 @@
       <option name="presentableId" value="Default" />
       <updated>1749238247555</updated>
     </task>
+    <task id="LOCAL-00001" summary="-przerobienie na funkcje&#10;-dodanie pandas&#10;-zapis do csv">
+      <option name="closed" value="true" />
+      <created>1749591603340</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749591603340</updated>
+    </task>
+    <task id="LOCAL-00002" summary="-przerobienie na funkcje&#10;-dodanie pandas&#10;-zapis do csv">
+      <option name="closed" value="true" />
+      <created>1749592150888</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749592150888</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -71,7 +92,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
