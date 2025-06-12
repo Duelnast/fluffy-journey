@@ -7,9 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa">
+    <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-dodanie dynamicznego tworzenia sciezki dla pobranych danych z gieldy">
+      <change afterPath="$PROJECT_DIR$/src/utils/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/connections/data_fetch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/connections/data_fetch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +43,8 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.data_fetch.executor": "Run",
+    "Python.nauka.executor": "Run",
+    "Python.utils.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -50,9 +54,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/connections" />
       <recent name="$PROJECT_DIR$/Data" />
       <recent name="$PROJECT_DIR$/src/logic" />
-      <recent name="$PROJECT_DIR$/src/connections" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -98,7 +102,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749675248705</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-dodanie dynamicznego tworzenia sciezki dla pobranych danych z gieldy">
+      <option name="closed" value="true" />
+      <created>1749682345238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749682345238</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +140,7 @@
     <MESSAGE value="-przerobienie na funkcje&#10;-dodanie pandas&#10;-zapis do csv" />
     <MESSAGE value="-utworzenie folderowej struktury&#10;-dodanie plikow na przyszlosc" />
     <MESSAGE value="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa" />
-    <option name="LAST_COMMIT_MESSAGE" value="-dodanie __init__py do utworzonych folderow&#10;-aktualizacja requirements.txt&#10;-dodanie return w data_fetch.py oraz poprawka nazewnictwa" />
+    <MESSAGE value="-dodanie dynamicznego tworzenia sciezki dla pobranych danych z gieldy" />
+    <option name="LAST_COMMIT_MESSAGE" value="-dodanie dynamicznego tworzenia sciezki dla pobranych danych z gieldy" />
   </component>
 </project>
