@@ -6,6 +6,17 @@ import ccxt
 import pandas as pd
 import numpy as np #ignore
 
+
+#Todo:
+# Uporzadkowac do ktorego folderu dane sa zapisywane
+# Wybieranie miedzy fetchowaniem historycznych danych, a aktualnych (live)
+# Do aktualnych (live) dodac sprawdzanie jakie ostatnie dane zostaly pobrane
+#
+#
+#
+#
+
+
 root = get_root()
 
 load_dotenv()
