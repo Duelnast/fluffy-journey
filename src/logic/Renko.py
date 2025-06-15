@@ -3,55 +3,58 @@ import numpy as np
 from src.utils import get_root
 
 root = get_root()
-potrzebne_kolumny = ['price']
+historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = ['price'])
+percentage1 = 0.005
 
-historic_tickers = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = potrzebne_kolumny)
-ceny_numpy = historic_tickers['price'].to_numpy()
+def renko(historic_tickers: pd.DataFrame, percentage: float):
+	"""Oblicza cegiełki Renko na podstawie historycznych danych cenowych.
+	:param historic_tickers: DataFrame zawierający co najmniej kolumnę 'price'.
+	:param percentage: Procentowy rozmiar cegiełki wyrażony jako ułamek, np. 0.005 dla 0.5%.
+	:return:
+	"""
 
-renko_chart = []
-if not renko_chart:
-	renko_chart.append({'cena': ceny_numpy[0], 'kierunek': 'brak'})
+	np_price = historic_tickers['price'].to_numpy()
+	renko_chart = []
+	if not renko_chart:
+		renko_chart.append({'cena': np_price[0], 'kierunek': 'brak'})
 
-print(renko_chart)
-bazowy_procent_zmiany = 0.005
-procent_zmiany_trendu_wzrostowego = bazowy_procent_zmiany + 1
-odwrocenie_trendu_wzrostowego = (1 - (2 * bazowy_procent_zmiany))
-procent_zmiany_trendu_spadkowego = 1 - bazowy_procent_zmiany
-odwrocenie_trendu_spadkowego = 2 * bazowy_procent_zmiany + 1
+	up_cont = percentage + 1
+	up_reversal = (1 - (2 * percentage))
+	down_cont = 1 - percentage
+	down_reversal = 2 * percentage + 1
 
-for aktualna_cena in ceny_numpy:
-	ostatnia_cegielka = renko_chart[-1]
-	poprzednia_cena = ostatnia_cegielka['cena']
-	kierunek_ostatniej_cegielki = ostatnia_cegielka['kierunek']
+	for current_price in np_price:
+		last_brick = renko_chart[-1]
+		last_price = last_brick['cena']
+		last_direction = last_brick['kierunek']
 
-	if kierunek_ostatniej_cegielki == 'up':
-		prog_wzrostowy_kontynuacji = poprzednia_cena * procent_zmiany_trendu_wzrostowego
-		prog_wzrostowy_odwrocenia = poprzednia_cena * odwrocenie_trendu_wzrostowego
+		if last_direction == 'up':
+			req_for_up_continuation = last_price * up_cont
+			req_for_up_reversal = last_price * up_reversal
 
-		if aktualna_cena >= prog_wzrostowy_kontynuacji:
-			renko_chart.append({'cena': round(prog_wzrostowy_kontynuacji, 4), 'kierunek': 'up'})
+			if current_price >= req_for_up_continuation:
+				renko_chart.append({'cena': current_price, 'kierunek': 'up'})
 
-		elif aktualna_cena <= prog_wzrostowy_odwrocenia:
-			renko_chart.append({'cena': round(prog_wzrostowy_odwrocenia, 4), 'kierunek': 'down'})
+			elif current_price <= req_for_up_reversal:
+				renko_chart.append({'cena': current_price, 'kierunek': 'down'})
 
-	elif kierunek_ostatniej_cegielki == 'down':
-		prog_spadkowy_kontynuacji = poprzednia_cena * procent_zmiany_trendu_spadkowego
-		prog_spadkowy_odwrocenia = poprzednia_cena * odwrocenie_trendu_spadkowego
+		elif last_direction == 'down':
+			req_for_down_continuation = last_price * down_cont
+			req_for_down_reversal = last_price * down_reversal
 
-		if aktualna_cena <= prog_spadkowy_kontynuacji:
-			renko_chart.append({'cena': round(prog_spadkowy_kontynuacji, 4), 'kierunek': 'down'})
+			if current_price <= req_for_down_continuation:
+				renko_chart.append({'cena': current_price, 'kierunek': 'down'})
 
-		elif aktualna_cena >= prog_spadkowy_odwrocenia:
-			renko_chart.append({'cena': round(prog_spadkowy_odwrocenia, 4), 'kierunek': 'up'})
+			elif current_price >= req_for_down_reversal:
+				renko_chart.append({'cena': current_price, 'kierunek': 'up'})
 
-	elif kierunek_ostatniej_cegielki == 'brak':
-		wzrost = poprzednia_cena * procent_zmiany_trendu_wzrostowego
-		spadek = poprzednia_cena * procent_zmiany_trendu_spadkowego
-		if aktualna_cena >= wzrost:
-			renko_chart.append({'cena': round(wzrost, 4), 'kierunek': 'up'})
+		elif last_direction == 'brak':
+			wzrost = last_price * up_cont
+			spadek = last_price * down_cont
+			if current_price >= wzrost:
+				renko_chart.append({'cena': current_price, 'kierunek': 'up'})
 
-		elif aktualna_cena <= spadek:
-			renko_chart.append({'cena': round(spadek, 4), 'kierunek': 'down'})
+			elif current_price <= spadek:
+				renko_chart.append({'cena': current_price, 'kierunek': 'down'})
 
-df = pd.DataFrame(renko_chart)
-print(df)
+	renko_df = pd.DataFrame(renko_chart)
