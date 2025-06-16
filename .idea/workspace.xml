@@ -8,7 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad43a57-4fed-42fd-8fe5-bf49666d82f6" name="Changes" comment="-obliczanie renko">
+      <change afterPath="$PROJECT_DIR$/src/logic/backtesting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/Renko.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Renko.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +32,7 @@
     <setting file="file://$PROJECT_DIR$/Renko.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -44,6 +46,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.Renko.executor": "Run",
+    "Python.backtesting.executor": "Run",
     "Python.csv_file_merge.executor": "Run",
     "Python.data_fetch.executor": "Run",
     "Python.nauka.executor": "Run",
@@ -164,6 +167,14 @@
                     <value>
                       <list>
                         <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1746316800000" />
+                        <option value="" />
                       </list>
                     </value>
                   </entry>

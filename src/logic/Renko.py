@@ -58,3 +58,6 @@ def renko(historic_tickers: pd.DataFrame, percentage: float):
 				renko_chart.append({'cena': current_price, 'kierunek': 'down'})
 
 	renko_df = pd.DataFrame(renko_chart)
+	renko_df.to_csv(f"{root}/Data/Chart/Renko/SUIUSDT_renko.csv")
+
+renko(historic_tickers1, percentage1)
