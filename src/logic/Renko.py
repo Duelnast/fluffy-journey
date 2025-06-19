@@ -3,8 +3,8 @@ import numpy as np
 from src.utils import get_root
 
 root = get_root()
-historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = ['price'])
-percentage1 = 0.005
+historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT_combined.csv', usecols = ['price'])
+percentage1 = 0.002
 
 def renko(historic_tickers: pd.DataFrame, percentage: float):
 	"""Oblicza cegiełki Renko na podstawie historycznych danych cenowych.

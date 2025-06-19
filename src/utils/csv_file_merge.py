@@ -1,0 +1,33 @@
+import pandas as pd
+from src.utils import get_root
+
+root = get_root()
+
+df1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-05.csv', usecols = ['price'])
+df2 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-06.csv', usecols = ['price'])
+df3 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-07.csv', usecols = ['price'])
+df4 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-08.csv', usecols = ['price'])
+df5 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-09.csv', usecols = ['price'])
+df6 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-10.csv', usecols = ['price'])
+df7 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-11.csv', usecols = ['price'])
+df8 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-12.csv', usecols = ['price'])
+df9 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-01.csv', usecols = ['price'])
+df10 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-02.csv', usecols = ['price'])
+df11 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-03.csv', usecols = ['price'])
+df12 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-04.csv', usecols = ['price'])
+df13 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-05.csv', usecols = ['price'])
+df14 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-06.csv', usecols = ['price'])
+df15 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-07.csv', usecols = ['price'])
+df16 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-08.csv', usecols = ['price'])
+df17 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-09.csv', usecols = ['price'])
+df18 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-10.csv', usecols = ['price'])
+df19 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-11.csv', usecols = ['price'])
+df20 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = ['price'])
+df21 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2025-01.csv', usecols = ['price'])
+df22 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2025-02.csv', usecols = ['price'])
+df23 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2025-03.csv', usecols = ['price'])
+df24 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2025-04.csv', usecols = ['price'])
+df25 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2025-05.csv', usecols = ['price'])
+
+polaczone = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, df11, df12, df13, df14, df15, df16, df17, df18, df19, df20, df21, df22, df23, df24, df25], ignore_index=True)
+polaczone.to_csv(f"{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT_combined.csv")
