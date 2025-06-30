@@ -1,3 +1,5 @@
 .env
 Data
 .idea/
+__pycache__/
+*pyc
