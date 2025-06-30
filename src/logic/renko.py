@@ -4,13 +4,13 @@ from src.utils import get_root
 
 root = get_root()
 historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-05.csv', usecols = ['price', 'time', 'quote_qty'])
-percentage1 = 0.01
+percentage1 = 0.005
 
 def renko(historic_tickers: pd.DataFrame, percentage: float):
 	"""Oblicza cegiełki Renko na podstawie historycznych danych cenowych.
 	:param historic_tickers: DataFrame zawierający co najmniej kolumnę 'price'.
 	:param percentage: Procentowy rozmiar cegiełki wyrażony jako ułamek, np. 0.005 dla 0.5%.
-	:return:
+	:return: pd.DataFrame z cegiełkami
 	"""
 
 	np_price = historic_tickers['price'].to_numpy()
@@ -71,6 +71,6 @@ def renko(historic_tickers: pd.DataFrame, percentage: float):
 				summed_volume = 0
 
 	renko_df = pd.DataFrame(renko_chart)
-	renko_df.to_csv(f"{root}/Data/Chart/Renko/SUIUSDT_renko3.csv")
+	return renko_df
 
 renko(historic_tickers1, percentage1)
