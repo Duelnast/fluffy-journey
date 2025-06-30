@@ -19,8 +19,8 @@ np_licznik = df_sygnal['Licznik'].to_numpy()
 
 df_sygnal.to_csv(f"{root}/Data/Chart/Renko/SUIUSDT_renko2.csv")
 
-long_entries = (np_licznik == 1)
-short_entries = (np_licznik == -1)
+long_entries = (np_licznik == 5)
+short_entries = (np_licznik == -5)
 
 long_exits = (np_licznik == -1)
 short_exits = (np_licznik == 1)
