@@ -3,7 +3,7 @@ import numpy as np
 from src.utils import get_root
 
 root = get_root()
-historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2023-05.csv', usecols = ['price', 'time', 'quote_qty'])
+historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = ['price', 'time', 'quote_qty'])
 percentage1 = 0.01
 
 class RenkoCalculator:
@@ -12,12 +12,13 @@ class RenkoCalculator:
 		self.historic_tickers = historic_tickers
 		self.percentage = percentage
 		self.renko_chart = []
-		self.summed_volume = 0
+
 
 	def renko(self):
 		np_price = self.historic_tickers['price'].to_numpy()
 		np_volume = self.historic_tickers['quote_qty'].to_numpy()
 		np_time = self.historic_tickers['time'].to_numpy()
+		summed_volume = 0
 
 		if not self.renko_chart:
 			self.renko_chart.append({'time': np_time[0], 'open': np_price[0], 'high': np_price[0], 'low': np_price[0], 'close': np_price[0], 'volume': np_volume[0], 'direction': 'none'})
@@ -32,18 +33,18 @@ class RenkoCalculator:
 			last_close = last_brick['close']
 			last_open = last_brick['open']
 			last_direction = last_brick['direction']
-			self.summed_volume += np_volume[index]
+			summed_volume += np_volume[index]
 
 			if last_direction == 'up':
 				req_for_up_continuation = last_close * up_cont
 				req_for_up_reversal = last_close * up_reversal
 
 				if current_price >= req_for_up_continuation:
-					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': self.summed_volume, 'direction': 'up'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': summed_volume, 'direction': 'up'})
 					summed_volume = 0
 
 				elif current_price <= req_for_up_reversal:
-					self.renko_chart.append({'time': np_time[index], 'open': last_open, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': self.summed_volume, 'direction': 'down'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_open, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': summed_volume, 'direction': 'down'})
 					summed_volume = 0
 
 			elif last_direction == 'down':
@@ -51,11 +52,11 @@ class RenkoCalculator:
 				req_for_down_reversal = last_close * down_reversal
 
 				if current_price <= req_for_down_continuation:
-					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': self.summed_volume, 'direction': 'down'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': summed_volume, 'direction': 'down'})
 					summed_volume = 0
 
 				elif current_price >= req_for_down_reversal:
-					self.renko_chart.append({'time': np_time[index], 'open': last_open, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': self.summed_volume, 'direction': 'up'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_open, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': summed_volume, 'direction': 'up'})
 					summed_volume = 0
 
 			elif last_direction == 'none':
@@ -73,7 +74,5 @@ class RenkoCalculator:
 		return self.renko_chart
 
 	def get_pkl_renko(self):
-		to_learn = self.renko_chart.pd.DataFrame()
+		to_learn = pd.DataFrame(self.renko_chart)
 		return to_learn.to_pickle(f'{root}/Data/Learning/SUIUSDT_renko.pkl')
-
-renko(historic_tickers1, percentage1)
