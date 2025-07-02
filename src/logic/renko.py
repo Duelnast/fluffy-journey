@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
-from src.utils import get_root
 
-root = get_root()
-historic_tickers1 = pd.read_csv(f'{root}/Data/Ticker/Historic/Futures/SUI_USDT/SUIUSDT-trades-2024-12.csv', usecols = ['price', 'time', 'quote_qty'])
-percentage1 = 0.01
+#TODO:
+#DODAC PRZEKONWERTOWANA DATE Z UNIX DLA ULATWIONEJ CZYTELNOSCI
+#
+#
+#
 
 class RenkoCalculator:
 
@@ -64,15 +65,11 @@ class RenkoCalculator:
 				spadek = last_close * down_cont
 
 				if current_price >= wzrost:
-					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': self.summed_volume, 'direction': 'up'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': current_price, 'low': last_open, 'close': current_price, 'volume': summed_volume, 'direction': 'up'})
 					summed_volume = 0
 
 				elif current_price <= spadek:
-					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': self.summed_volume, 'direction': 'down'})
+					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': summed_volume, 'direction': 'down'})
 					summed_volume = 0
 
 		return self.renko_chart
-
-	def get_pkl_renko(self):
-		to_learn = pd.DataFrame(self.renko_chart)
-		return to_learn.to_pickle(f'{root}/Data/Learning/SUIUSDT_renko.pkl')
