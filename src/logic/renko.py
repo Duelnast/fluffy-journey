@@ -16,10 +16,9 @@ class RenkoCalculator:
 
 
 	def calculate(self, data: pd.DataFrame):
-		historic_tickers = data
-		np_price = historic_tickers['price'].to_numpy()
-		np_volume = historic_tickers['quote_qty'].to_numpy()
-		np_time = historic_tickers['time'].to_numpy()
+		np_price = data['price'].to_numpy()
+		np_volume = data['qty'].to_numpy()
+		np_time = data['time'].to_numpy()
 
 		if not self.renko_chart:
 			self.renko_chart.append({'time': np_time[0], 'open': np_price[0], 'high': np_price[0], 'low': np_price[0], 'close': np_price[0], 'volume': np_volume[0], 'direction': 'none'})
@@ -71,5 +70,8 @@ class RenkoCalculator:
 				elif current_price <= spadek:
 					self.renko_chart.append({'time': np_time[index], 'open': last_close, 'high': last_close, 'low': current_price, 'close': current_price, 'volume': self.summed_volume, 'direction': 'down'})
 					self.summed_volume = 0
+		return pd.DataFrame(self.renko_chart)
 
-		return self.renko_chart
+	def trim_history(self):
+		if self.renko_chart:
+			self.renko_chart = [self.renko_chart[-1]]

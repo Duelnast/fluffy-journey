@@ -12,8 +12,8 @@ if __name__ == '__main__':
 
 	while True:
 		print("""Available scripts:
-		-Saving csv to db - 1
-		-Reading data from db, calculating renko and saving to db - 2
+		-Saving csv to db - type: 1
+		-Reading data from db, calculating renko and saving to db - type: 2
 		-Exit
 		""")
 		which_one = input('Which one script to run:')
@@ -56,18 +56,28 @@ if __name__ == '__main__':
 		if which_one == '2':
 			pair = input('Which pair do you want to run (eg. SUIUSDT):')
 			percentage = float(input('Which renko brick percentage do you want (eg. 0.005 = 0.5%):'))
+
 			print('Connecting to database...')
+
 			db = DatabaseHandler()
 			print('Connection established...')
-			print('Reading data...')
-			db_df = db.read_db('ticker_trades_futures', pair)
-			print('Calculating renko bricks...')
-			renko_calculator = RenkoCalculator(percentage)
-			calculated_renko = pd.DataFrame(renko_calculator.calculate(db_df))
-			print('Calculated renko bricks...')
-			print('Writing data...')
-			db.append_df(calculated_renko, 'renko_fixed_percentage')
-			print('Done')
+			with db.engine.connect() as connection:
+				streaming_connection = connection.execution_options(stream_results=True)
+				print('Reading data...')
+				db_df = db.read_db(connection,'ticker_trades_futures', pair)
+
+				print('Calculating renko bricks...')
+				renko_calculator = RenkoCalculator(percentage)
+
+				for data_chunk in db_df:
+					calculated_renko = renko_calculator.calculate(data_chunk)
+					calculated_renko['brick_size_bp'] = percentage * 10000
+					calculated_renko['symbol'] = pair
+					print('Writing chunk of data...')
+					db.append_df(calculated_renko, 'futures_renko_percentage')
+					#renko_calculator.trim_history()
+
+				print('Done')
 
 		if which_one.lower() == 'exit':
 			break

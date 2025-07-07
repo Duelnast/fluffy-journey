@@ -29,12 +29,12 @@ class DatabaseHandler:
 		except sqlalchemy.exc.OperationalError:
 			print("Database connection failed")
 
-	def read_db(self, table_name: str, pair: str):
-		select_statement = f'SELECT * FROM {table_name} WHERE symbol = %(symbol_val)s'
+	def read_db(self, connection, table_name: str, pair: str):
+		select_statement = f'SELECT time, price, qty FROM {table_name} WHERE symbol = %(symbol_val)s ORDER BY time ASC'
 
 		params_dict = {"symbol_val": pair}
 
 		try:
-			return pd.read_sql(select_statement, self.engine, params=params_dict)
+				return pd.read_sql(select_statement, connection, params=params_dict, chunksize=5000000)
 		except Exception as e:
 			print(f"Database connection failed: {e}")
