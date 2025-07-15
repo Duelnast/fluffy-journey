@@ -1,5 +1,9 @@
 ccxt~=4.4.88
 pandas~=2.2.3
-numpy~=2.0.1
+numpy~=2.3.1
 python-dotenv~=1.1.0
 vectorbt~=0.27.3
+sqlalchemy~=2.0.39
+gymnasium~=1.2.0
+stable-baselines3~=2.7.0a1
+torch~=2.7.1+cu128

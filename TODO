@@ -1,0 +1,7 @@
+pickle.py:
+#skipowanie juz obrobionych danych - mozna zrobic na zasadzie nr pliku * 400000(ilosc danych jakie biore do testowania)
+#tworzenie folderow Validation oraz Test
+#poprawienie komendy SQL
+
+renko.py:
+#DODAC PRZEKONWERTOWANA DATE Z UNIX DLA ULATWIONEJ CZYTELNOSCI
