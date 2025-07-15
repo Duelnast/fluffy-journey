@@ -1,6 +1,7 @@
 from src.logic import RenkoCalculator
 from src.utils import get_root, get_file_name
 from src.connections import DatabaseHandler
+from src.bot import db_to_pickle
 from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 import numpy as np
@@ -78,6 +79,9 @@ if __name__ == '__main__':
 					#renko_calculator.trim_history()
 
 				print('Done')
+
+		if which_one == '3':
+			db_to_pickle()
 
 		if which_one.lower() == 'exit':
 			break

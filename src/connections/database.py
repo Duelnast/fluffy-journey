@@ -29,12 +29,22 @@ class DatabaseHandler:
 		except sqlalchemy.exc.OperationalError:
 			print("Database connection failed")
 
-	def read_db(self, connection, table_name: str, pair: str):
-		select_statement = f'SELECT time, price, qty FROM {table_name} WHERE symbol = %(symbol_val)s ORDER BY time ASC'
-
+	def read_db(self, connection, table_name: str, pair: str, select_statement: str):
+		if select_statement == "":
+			select_statement = f'SELECT time, price, qty FROM {table_name} WHERE symbol = %(symbol_val)s ORDER BY time ASC'
+		else:
+			select_statement = select_statement
 		params_dict = {"symbol_val": pair}
 
 		try:
-				return pd.read_sql(select_statement, connection, params=params_dict, chunksize=5000000)
+			which_one = input("Chunked data? [y/n]")
+			if which_one == 'y':
+				chunk_size = input("Chunk size (default(or blank) = 400000): ")
+				if chunk_size == 'default' or chunk_size == "":
+					return pd.read_sql(select_statement, connection, params=params_dict, chunksize=400000)
+				else:
+					return pd.read_sql(select_statement, connection, params=params_dict, chunksize=int(chunk_size))
+			elif which_one == 'n':
+				return pd.read_sql(select_statement, connection, params=params_dict)
 		except Exception as e:
 			print(f"Database connection failed: {e}")
