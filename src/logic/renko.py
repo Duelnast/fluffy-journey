@@ -1,12 +1,6 @@
 import pandas as pd
 import numpy as np
 
-#TODO:
-#DODAC PRZEKONWERTOWANA DATE Z UNIX DLA ULATWIONEJ CZYTELNOSCI
-#
-#
-#
-
 class RenkoCalculator:
 
 	def __init__(self, percentage : float):

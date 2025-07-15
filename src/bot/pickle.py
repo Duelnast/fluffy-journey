@@ -6,13 +6,6 @@ import pathlib as Path
 import re
 import os
 
-#TODO:
-#skipowanie juz obrobionych danych - mozna zrobic na zasadzie nr pliku * 400000(ilosc danych jakie biore do testowania)
-#tworzenie folderow Validation oraz Test
-#poprawienie komendy SQL
-#
-
-
 root = get_root()
 
 def last_file_number(file_path: Path):
